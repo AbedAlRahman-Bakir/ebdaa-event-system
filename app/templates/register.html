@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Ebdaa Event — Register{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+        <a href="/" class="navbar-brand fw-bold text-primary fs-4">Ebdaa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center gap-3">
+                <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
+                <li class="nav-item"><a href="/login" class="btn btn-outline-primary btn-sm">Admin Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="py-5">
+    <div class="container" style="max-width:600px;">
+        <h2 class="fw-bold mb-1 text-center">Visitor Registration</h2>
+        <p class="text-muted text-center mb-4">Reserve your spot for the Ebdaa Event</p>
+
+        <div id="alert-container"></div>
+
+        <form id="register-form">
+            <div class="mb-3">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="email" class="form-label">Email</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="phone" class="form-label">Phone</label>
+                <input type="tel" class="form-control" id="phone" name="phone" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="city" class="form-label">City</label>
+                <input type="text" class="form-control" id="city" name="city" required>
+            </div>
+
+            <div class="mb-3">
+                <label for="type" class="form-label">I am a</label>
+                <select class="form-select" id="type" name="type" required>
+                    <option value="" disabled selected>Select type</option>
+                    <option value="student">Student</option>
+                    <option value="teacher">Teacher</option>
+                    <option value="parent">Parent</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label for="group_size" class="form-label">Number of Attendees</label>
+                <select class="form-select" id="group_size" name="group_size" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                </select>
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Select Day</label>
+                <div class="d-flex gap-2 flex-wrap" id="day-selector">
+                    <button type="button" class="btn btn-outline-primary day-btn" data-day="2">Day 2</button>
+                    <button type="button" class="btn btn-outline-primary day-btn" data-day="3">Day 3</button>
+                    <button type="button" class="btn btn-outline-primary day-btn" data-day="4">Day 4</button>
+                    <button type="button" class="btn btn-outline-primary day-btn" data-day="5">Day 5</button>
+                    <button type="button" class="btn btn-outline-primary day-btn" data-day="6">Day 6</button>
+                </div>
+            </div>
+
+            <div class="mb-4" id="slots-container" style="display:none;">
+                <label class="form-label">Select Time Slot</label>
+                <div id="slots-list" class="d-flex flex-column gap-2"></div>
+            </div>
+
+            <input type="hidden" id="time_slot_id" name="time_slot_id">
+
+            <button type="submit" class="btn btn-primary w-100 btn-lg" id="submit-btn" disabled>Register</button>
+        </form>
+    </div>
+</section>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center py-5">
+                <i class="bi bi-check-circle text-success" style="font-size:3rem;"></i>
+                <h4 class="fw-bold mt-3">Registration Successful!</h4>
+                <p class="text-muted" id="success-message"></p>
+                <a href="/" class="btn btn-primary mt-2">Back to Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer class="bg-dark text-secondary text-center py-3 mt-auto">
+    <small>Ebdaa Event Attendance & Registration System</small>
+</footer>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/register.js') }}"></script>
+{% endblock %}

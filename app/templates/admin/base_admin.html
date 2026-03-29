@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-dark bg-dark sticky-top">
+    <div class="container-fluid px-4">
+        <a href="/admin/dashboard" class="navbar-brand fw-bold">Ebdaa Admin</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#adminNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="adminNav">
+            <ul class="navbar-nav me-auto" id="admin-nav-links">
+                <li class="nav-item"><a href="/admin/dashboard" class="nav-link">Dashboard</a></li>
+                <li class="nav-item"><a href="/admin/users" class="nav-link">Users</a></li>
+                <li class="nav-item"><a href="/admin/attendance" class="nav-link">Attendance</a></li>
+                <li class="nav-item"><a href="/admin/checkin" class="nav-link">Check-in</a></li>
+            </ul>
+            <ul class="navbar-nav">
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown">
+                        <i class="bi bi-person-circle me-1"></i>
+                        <span id="nav-username"></span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><span class="dropdown-item-text text-muted small" id="nav-role"></span></li>
+                        <li><hr class="dropdown-divider"></li>
+                        <li><a class="dropdown-item" href="#" onclick="logout()">Logout</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid px-4 py-4">
+    {% block content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/auth.js') }}"></script>
+<script>
+    // Check auth and set nav info
+    if (!requireAuth()) {
+        // requireAuth redirects to login
+    } else {
+        document.getElementById('nav-username').textContent = getUsername();
+        document.getElementById('nav-role').textContent = getRole().toUpperCase();
+
+        // Hide admin-only links for operators
+        if (getRole() === 'operator') {
+            const adminLinks = document.querySelectorAll('#admin-nav-links .nav-item');
+            adminLinks.forEach(link => {
+                const href = link.querySelector('a').getAttribute('href');
+                if (href !== '/admin/checkin') {
+                    link.style.display = 'none';
+                }
+            });
+        }
+    }
+</script>
+{% block page_scripts %}{% endblock %}
+{% endblock %}

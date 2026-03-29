@@ -1,0 +1,12 @@
+venv/
+__pycache__/
+*.pyc
+.env
+ebdaa_dev.db
+uploads/
+.pytest_cache/
+instance/
+*.docx
+*.xlsx
+*.csv
+.ruff_cache/

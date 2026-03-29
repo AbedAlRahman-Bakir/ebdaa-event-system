@@ -1,0 +1,71 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Ebdaa — Attendance Logs{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-4">
+    <h4 class="fw-bold mb-0">Attendance Logs</h4>
+    <small class="text-muted" id="table-info"></small>
+</div>
+
+<!-- Filters -->
+<div class="card border-0 shadow-sm mb-3">
+    <div class="card-body py-2">
+        <div class="row g-2 align-items-center">
+            <div class="col-md-3">
+                <select class="form-select form-select-sm" id="day-filter">
+                    <option value="">All Days</option>
+                    <option value="1">Day 1</option>
+                    <option value="2">Day 2</option>
+                    <option value="3">Day 3</option>
+                    <option value="4">Day 4</option>
+                    <option value="5">Day 5</option>
+                    <option value="6">Day 6</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <select class="form-select form-select-sm" id="role-filter">
+                    <option value="">All Roles</option>
+                    <option value="student">Students</option>
+                    <option value="judge">Judges</option>
+                </select>
+            </div>
+            <div class="col-md-2">
+                <select class="form-select form-select-sm" id="per-page">
+                    <option value="20" selected>20 per page</option>
+                    <option value="50">50 per page</option>
+                    <option value="100">100 per page</option>
+                </select>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Attendance Table -->
+<div class="card border-0 shadow-sm">
+    <div class="table-responsive">
+        <table class="table table-hover align-middle mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Role</th>
+                    <th>Day</th>
+                    <th>Check-in Time</th>
+                </tr>
+            </thead>
+            <tbody id="attendance-table"></tbody>
+        </table>
+    </div>
+    <div class="card-footer bg-white d-flex justify-content-between align-items-center">
+        <small class="text-muted" id="page-info"></small>
+        <nav>
+            <ul class="pagination pagination-sm mb-0" id="pagination"></ul>
+        </nav>
+    </div>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/attendance.js') }}"></script>
+{% endblock %}

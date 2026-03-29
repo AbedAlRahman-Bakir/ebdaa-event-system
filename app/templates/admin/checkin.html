@@ -1,0 +1,85 @@
+{% extends "admin/base_admin.html" %}
+
+{% block title %}Ebdaa — Check-in Scanner{% endblock %}
+
+{% block head %}
+<script src="https://unpkg.com/html5-qrcode@2.3.8/html5-qrcode.min.js"></script>
+<style>
+    #reader {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+        border-radius: 12px;
+        overflow: hidden;
+    }
+    .result-card {
+        max-width: 500px;
+        margin: 0 auto;
+        transition: all 0.3s;
+    }
+    .result-success { border-left: 4px solid #10b981; }
+    .result-warning { border-left: 4px solid #f59e0b; }
+    .result-error { border-left: 4px solid #ef4444; }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="text-center mb-4">
+    <h4 class="fw-bold mb-1">Check-in Scanner</h4>
+    <p class="text-muted">Scan a badge QR code to check in</p>
+</div>
+
+<!-- Day Selector -->
+<div class="d-flex justify-content-center mb-4">
+    <div class="btn-group" id="day-selector">
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="1">Day 1</button>
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="2">Day 2</button>
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="3">Day 3</button>
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="4">Day 4</button>
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="5">Day 5</button>
+        <button type="button" class="btn btn-outline-primary day-btn" data-day="6">Day 6</button>
+    </div>
+</div>
+
+<div id="no-day-warning" class="text-center text-muted mb-3">
+    <i class="bi bi-info-circle me-1"></i>Select a day to start scanning
+</div>
+
+<!-- Scanner -->
+<div id="reader" style="display:none;"></div>
+
+<!-- Manual Input -->
+<div class="text-center mt-3" style="max-width:500px; margin:0 auto;">
+    <p class="text-muted small mb-2">Or enter QR code manually</p>
+    <div class="input-group input-group-sm">
+        <input type="text" class="form-control" id="manual-qr" placeholder="Paste QR code here...">
+        <button class="btn btn-primary" onclick="manualCheckin()">Check in</button>
+    </div>
+</div>
+
+<!-- Result -->
+<div id="result-container" class="mt-4" style="display:none;">
+    <div class="card result-card shadow-sm" id="result-card">
+        <div class="card-body text-center py-4">
+            <i class="fs-1 mb-2" id="result-icon"></i>
+            <h5 class="fw-bold" id="result-title"></h5>
+            <p class="text-muted mb-3" id="result-message"></p>
+            <button class="btn btn-primary btn-sm" onclick="resumeScanner()">
+                <i class="bi bi-qr-code-scan me-1"></i>Scan Next
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Check-ins -->
+<div class="mt-4" style="max-width:500px; margin:0 auto;">
+    <h6 class="fw-bold mb-3 text-center">Recent Check-ins</h6>
+    <ul class="list-group list-group-flush" id="recent-list">
+        <li class="list-group-item text-center text-muted small">No check-ins yet</li>
+    </ul>
+</div>
+{% endblock %}
+
+{% block page_scripts %}
+<script src="{{ url_for('static', filename='js/checkin.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,35 @@
+/* ========== Global ========== */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    color: #1a1a2e;
+}
+
+/* ========== Hero ========== */
+.hero {
+    background: linear-gradient(135deg, #1e3a5f 0%, #2563eb 100%);
+}
+
+/* ========== Login Page ========== */
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f3f4f6;
+}
+
+.login-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 40px 32px;
+    width: 100%;
+    max-width: 420px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+}
+
+@media (max-width: 480px) {
+    .login-card {
+        margin: 16px;
+        padding: 28px 20px;
+    }
+}

@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+
+{% block title %}Ebdaa Event — Home{% endblock %}
+
+{% block body %}
+<nav class="navbar navbar-expand-md navbar-light bg-white border-bottom sticky-top">
+    <div class="container">
+        <a href="/" class="navbar-brand fw-bold text-primary fs-4">Ebdaa</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav align-items-center gap-3">
+                <li class="nav-item"><a href="/login" class="btn btn-outline-primary btn-sm">Admin Login</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<section class="hero text-white text-center py-5">
+    <div class="container py-4">
+        <h1 class="display-4 fw-bold mb-2">Ebdaa Event</h1>
+        <p class="lead mb-4 opacity-75">Innovation & Creativity Exhibition</p>
+        <div class="d-flex justify-content-center gap-4 flex-wrap mb-4">
+            <div class="bg-white bg-opacity-10 rounded-3 px-4 py-3 text-center">
+                <i class="bi bi-calendar-event fs-4 d-block mb-1"></i>
+                <small class="d-block text-uppercase opacity-50" style="letter-spacing:1px;">Date</small>
+                <span class="fw-medium">Day 1 - Day 6</span>
+            </div>
+            <div class="bg-white bg-opacity-10 rounded-3 px-4 py-3 text-center">
+                <i class="bi bi-geo-alt fs-4 d-block mb-1"></i>
+                <small class="d-block text-uppercase opacity-50" style="letter-spacing:1px;">Location</small>
+                <span class="fw-medium">Riyadh, Saudi Arabia</span>
+            </div>
+            <div class="bg-white bg-opacity-10 rounded-3 px-4 py-3 text-center">
+                <i class="bi bi-people fs-4 d-block mb-1"></i>
+                <small class="d-block text-uppercase opacity-50" style="letter-spacing:1px;">Visitors</small>
+                <span class="fw-medium">Open to Public (Day 2-6)</span>
+            </div>
+        </div>
+        <a href="/register" class="btn btn-light btn-lg px-4">Register as Visitor</a>
+    </div>
+</section>
+
+<section class="py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-3">About the Event</h2>
+        <p class="text-muted mx-auto mb-5" style="max-width:600px;">Ebdaa brings together students, judges, and visitors to celebrate innovation and creativity. Explore projects across multiple sectors including Technology, Energy, Environment, and more.</p>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="card border h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Student Projects</h5>
+                        <p class="card-text text-muted small">Explore innovative projects from talented students across different provinces.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">Expert Judges</h5>
+                        <p class="card-text text-muted small">Projects are evaluated by leading professionals and academics.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="card border h-100">
+                    <div class="card-body text-center">
+                        <h5 class="card-title fw-bold">6-Day Event</h5>
+                        <p class="card-text text-muted small">A week-long experience with multiple time slots available for visitors.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="bg-light py-5">
+    <div class="container text-center">
+        <h2 class="fw-bold mb-2">Ready to Visit?</h2>
+        <p class="text-muted mb-4">Reserve your spot now. Choose your preferred day and time slot.</p>
+        <a href="/register" class="btn btn-primary btn-lg px-4">Register Now</a>
+    </div>
+</section>
+
+<footer class="bg-dark text-secondary text-center py-3">
+    <small>Ebdaa Event Attendance & Registration System</small>
+</footer>
+{% endblock %}

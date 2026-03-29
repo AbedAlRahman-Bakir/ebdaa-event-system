@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+
+{% block title %}Ebdaa Event — Login{% endblock %}
+
+{% block body %}
+<div class="login-page">
+    <div class="login-card">
+        <div class="text-center mb-4">
+            <a href="/" class="text-primary text-decoration-none fw-bold fs-3">Ebdaa</a>
+            <p class="text-muted mt-1 mb-0">Admin Panel Login</p>
+        </div>
+
+        <div id="alert-container"></div>
+
+        <form id="login-form">
+            <div class="mb-3">
+                <label for="username" class="form-label">Username</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-person"></i></span>
+                    <input type="text" class="form-control" id="username" placeholder="Enter username" required>
+                </div>
+            </div>
+
+            <div class="mb-4">
+                <label for="password" class="form-label">Password</label>
+                <div class="input-group">
+                    <span class="input-group-text"><i class="bi bi-lock"></i></span>
+                    <input type="password" class="form-control" id="password" placeholder="Enter password" required>
+                </div>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100" id="login-btn">Login</button>
+        </form>
+
+        <div class="text-center mt-3">
+            <a href="/" class="text-muted small">Back to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/login.js') }}"></script>
+{% endblock %}
